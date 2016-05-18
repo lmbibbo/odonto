@@ -1,0 +1,53 @@
+<section data-ng-controller="PacientesController">
+  <form name="pacienteForm" class="form-horizontal col-md-6" role="form" data-ng-submit="create(pacienteForm.$valid)" novalidate>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && pacienteForm.firstName.$invalid }">
+      <label mean-token="'create-firstName'" class="col-md-3 control-label">Nombre</label>
+      <div class="col-md-9">
+        <input name="firstName" type="text" class="form-control" data-ng-model="firstName" id="firstName" placeholder="Title" required>
+        <div ng-show="submitted && pacienteForm.firstName.$invalid" class="help-block">
+          <p ng-show="pacienteForm.firstName.$error.required">Nombre is required</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && pacienteForm.lastName.$invalid }">
+      <label mean-token="'create-lastName'" for="lastName" class="col-md-3 control-label">Apellido</label>
+      <div class="col-md-9">
+        <input name="lastName" type="text" class="form-control" data-ng-model="lastName" id="lastName" placeholder="lastName" required>
+        <div ng-show="submitted && pacienteForm.lastName.$invalid" class="help-block">
+          <p ng-show="pacienteForm.lastName.$error.required">Apellido is required</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label mean-token="'create-birthDate'" for="birthDate" class="col-md-3 control-label">Fecha de Nacimiento</label>
+      <div class="col-md-6" w>
+        <input name="birthDate" type="date" class="form-control" data-ng-model="birthDate" id="birthDate" placeholder="birthDate">
+      </div>
+    </div>
+    <div class="form-group">
+      <label mean-token="'create-gender'" for="gender" class="col-md-3 control-label">Genero</label>
+      <div class="col-md-9">
+       <input type="radio" name="gender" value="M" data-ng-model="gender" id="gender" placeholder="gender"checked> Masculino &nbsp;
+       <input type="radio" name="gender" value="F" data-ng-model="gender" id="gender" placeholder="gender"> Femenino
+      </div>
+    </div>
+    <div class="form-group">
+      <label mean-token="'create-telephone'" for="telephone" class="col-md-3 control-label">Teléfono</label>
+      <div class="col-md-6" w>
+        <input name="telephone" type="text" class="form-control" data-ng-model="telephone" id="telephone" placeholder="telephone">
+      </div>
+    </div>    
+    <div class="form-group">
+      <label mean-token="'create-email'" for="email" class="col-md-3 control-label">Correo Electŕonico</label>
+      <div class="col-md-9" w>
+        <input name="email" type="text" class="form-control" data-ng-model="email" id="email" placeholder="email">
+      </div>
+    </div>    
+    <div class="form-group">
+      <div class="col-md-offset-3 col-md-9">
+        <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+    </div>
+  </form>
+</section>

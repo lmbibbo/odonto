@@ -1,0 +1,38 @@
+<section data-ng-controller="PacientesController" data-ng-init="findOne()">
+  
+  <label>Nuevo estudio para el Paciente: {{paciente.firstName}}, {{paciente.lastName}} </label>
+
+  <form name="estudioForm" class="form-horizontal col-md-9" role="form" data-ng-submit="createEstudio(estudioForm.$valid, picFile)" novalidate>
+
+   <div class="form-group">
+      <label mean-token="'create-estudioDate'" for="estudioDate" class="col-md-3 control-label">Fecha de Estudio</label>
+      <div class="col-md-6" w>
+        <input name="estudioDate" type="date" class="form-control" data-ng-model="estudioDate" id="estudioDate" placeholder="estudioDate">
+      </div>
+   </div>
+
+   <div class="form-group" ng-class="{ 'has-error' : submitted && estudioForm.content.$invalid }">
+        <label mean-token="'create-estudioImage'" for="estudioImage" class="col-md-2 control-label">Imagen Estudio:</label>
+        <input type="file" ngf-select ng-model="picFile" name="file"    
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+        <i ng-show="estudioForm.file.$error.required">*required</i><br>
+        <i ng-show="estudioForm.file.$error.maxSize">File too large 
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+        <img ng-show="estudioForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+        <span class="progress" ng-show="picFile.progress >= 0">
+            <div style="width:{{picFile.progress}}%" 
+            ng-bind="picFile.progress + '%'"></div>
+        </span>
+        <span ng-show="picFile.result">Upload Successful</span>
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+    </div>  
+
+    <div class="form-group">
+      <div class="col-md-offset-3 col-md-9">
+        <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+    </div>
+  </form>
+
+</section>

@@ -1,0 +1,26 @@
+<section data-ng-controller="EstudiosController" data-ng-init="find()">
+  <ul class="estudios unstyled">
+    <li data-ng-repeat="estudio in estudios">
+      <span>{{estudio.created | date:'medium'}}</span> /
+      <span>Paciente firstName: {{estudio.paciente.firstName}}</span> /
+      <span>Paciente lastName: {{estudio.paciente.lastName}}</span> /
+      <span>Paciente : {{estudio.paciente.valueOf()}}</span> /
+
+      <br>
+      <a data-ng-href="#!/estudios/{{estudio._id}}">{{estudio.imageUrl}}</a>
+
+      <br>
+      <h2> {{estudio.estudioDate}} </h2> 
+
+      <span data-ng-if="isAdmin()">
+        <a class="btn" href="/#!/estudios/{{estudio._id}}/edit">
+          <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn" data-ng-click="remove(estudio);">
+           <i class="glyphicon glyphicon-trash"></i>
+        </a>
+      </span>
+    </li>
+  </ul>
+  <h1 data-ng-hide="!estudios || estudios.length">No estudios yet. <br> Why don't you <a href="/#!/estudios/create">Create One</a>?</h1>
+</section>

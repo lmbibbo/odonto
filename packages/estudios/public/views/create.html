@@ -1,0 +1,34 @@
+<section data-ng-controller="PacientesController" data-ng-init="findOne()">
+  
+
+  <label>Nuevo estudio para el Paciente: {{paciente.firstName}}, {{paciente.lastName}} </label>
+
+  <article data-ng-controller="EstudiosController">
+
+  <form name="estudioForm" class="form-horizontal col-md-9" role="form" data-ng-submit="create(estudioForm.$valid)" novalidate>
+
+   <div  class="form-group" ng-class="{ 'has-error' : submitted && estudioForm.imageUrl.$invalid }">
+      <label mean-token="'create-imageUrl'" for="imageUrl" class="col-md-3 control-label">Archivo Imagen</label>
+      <div class="col-md-9">
+        <input name="imageUrl" type="text" class="form-control" data-ng-model="imageUrl" id="imageUrl" placeholder="imageUrl" required>
+        <div ng-show="submitted && estudioForm.imageUrl.$invalid" class="help-block">
+          <p ng-show="estudioForm.imageUrl.$error.required">El nombre del archivo es requerido</p>
+        </div>
+      </div>
+   </div>
+
+   <div class="form-group">
+      <label mean-token="'create-estudioDate'" for="estudioDate" class="col-md-3 control-label">Fecha de Estudio</label>
+      <div class="col-md-6" w>
+        <input name="estudioDate" type="date" class="form-control" data-ng-model="estudioDate" id="estudioDate" placeholder="estudioDate">
+      </div>
+   </div>
+       
+    <div class="form-group">
+      <div class="col-md-offset-3 col-md-9">
+        <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+    </div>
+  </form>
+  </article>
+</section>

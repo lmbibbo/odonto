@@ -1,0 +1,56 @@
+<section data-ng-controller="PacientesController" data-ng-init="findOne()">
+  <form name="pacienteForm" class="form-horizontal col-md-6" role="form" data-ng-submit="update(pacienteForm.$valid)" novalidate>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && pacienteForm.firstName.$invalid }">
+      <label mean-token="'edit-firstName'" for="firstName" class="col-md-2 control-label">Nombre</label>
+      <div class="col-md-9">
+        <input name="firstName" type="text" class="form-control" data-ng-model="paciente.firstName" id="firstName" placeholder="firstName" required>
+        <div ng-show="submitted && pacienteForm.firstName.$invalid" class="help-block">
+          <p ng-show="pacienteForm.firstName.$error.required">Nombre is required</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && pacienteForm.lastName.$invalid }">
+      <label mean-token="'edit-lastName'" for="lastName" class="col-md-2 control-label">Apellido</label>
+      <div class="col-md-9">
+        <input name="lastName" type="text" class="form-control" data-ng-model="paciente.lastName" id="lastName" placeholder="lastName" required>
+        <div ng-show="submitted && pacienteForm.lastName.$invalid" class="help-block">
+          <p ng-show="pacienteForm.lastName.$error.required">Apellido is required</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label mean-token="'edit-birthDate'" for="birthDate" class="col-md-3 control-label">Fecha de Nacimiento</label>
+      <div class="col-md-6">
+        <input name="birthDate" type="date" class="form-control" value="paciente.birthDate" data-ng-model="paciente.birthDate" id="birthDate" placeholder="birthDate" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label mean-token="'edit-gender'" for="gender" class="col-md-3 control-label">Genero</label>
+      <div class="col-md-9">
+       <input type="radio" name="gender" value="M" data-ng-model="paciente.gender" id="gender" placeholder="gender"> Masculino &nbsp;
+       <input type="radio" name="gender" value="F" data-ng-model="paciente.gender" id="gender" placeholder="gender"> Femenino
+      </div>
+    </div>
+    <div class="form-group">
+      <label mean-token="'edit-telephone'" for="telephone" class="col-md-3 control-label">Teléfono</label>
+      <div class="col-md-6" w>
+        <input name="telephone" type="text" class="form-control" data-ng-model="paciente.telephone" id="telephone" placeholder="telephone">
+      </div>
+    </div>    
+    <div class="form-group">
+      <label mean-token="'edit-email'" for="email" class="col-md-3 control-label">Correo Electŕonico</label>
+      <div class="col-md-9" w>
+        <input name="email" type="text" class="form-control" data-ng-model="paciente.email" id="email" placeholder="email">
+      </div>
+    </div>    
+
+
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <button mean-token="'edit-submit'" type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+</section>

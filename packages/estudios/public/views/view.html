@@ -1,0 +1,26 @@
+<section data-ng-controller="EstudiosController" data-ng-init="findOne()">
+  <div class="container">
+    <div class="row" >
+      <div class="col-sm-6"> <h3 style="text-align: left;">Paciente: {{estudio.paciente.lastName}}, {{estudio.paciente.firstName}} </h3> </div>
+      <div class="col-sm-6"> <span class="pull-right">
+        <a class="btn btn-default" href="/#!/pacientes/{{estudio.paciente._id}}">Volver</a>
+        </span>
+      </div> 
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <label>Estudio: {{estudio.created | date:'medium'}}</label>
+        <div style="float: right;">
+          <div data-ng-if="isAdmin()">
+            <a class="btn" data-ng-click="remove(estudio);">
+               <i class="glyphicon glyphicon-trash"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <img ng-src="data:image/jpeg;base64,{{estudio.image}}" id="estudio.image"/>
+    </div>
+  </div>
+</section>

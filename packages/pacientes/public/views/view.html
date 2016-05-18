@@ -1,0 +1,53 @@
+<section data-ng-controller="PacientesController" data-ng-init="findOne(); findEstudiobyPaciente()">
+  <div class="container">
+    <div class="row" >
+      <div class="col-sm-6"> <h2 style="text-align: left;">Paciente: {{paciente.lastName}}, {{paciente.firstName}} </h2> </div>
+      <div class="col-sm-6"> <span class="pull-right">
+        <a class="btn btn-default" href="/#!/pacientes">Volver</a>
+        </span>
+      </div> 
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading lead">
+        <label>Datos del Paciente</label>
+        <div style="float: right;">
+          <div data-ng-if="hasAuthorization(paciente)">
+            <a class="btn" href="/#!/pacientes/{{paciente._id}}/edit">
+              <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn" data-ng-click="remove(paciente);">
+              <i class="glyphicon glyphicon-trash"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <label>Genero: </label> {{paciente.gender}}<br>
+        <label>Fecha de Nacimiento: </label> {{paciente.birthDate | date:"dd/MM/yyyy"}} <br>
+        <label>Teléfono: </label> {{paciente.telephone}} <br>
+        <label>Correo Electrónico: </label> {{paciente.email}} <br>
+        <span>fecha de creación: {{paciente.created | date:'medium'}}</span> 
+      </div>
+    </div> 
+    <div class="panel panel-primary lead" >
+      <div class="panel-heading lead">
+        <label>Estudios del Paciente</label>
+        <div style="float: right;">
+          <div data-ng-if="hasAuthorization(paciente)">
+            <a class="btn btn-primary" data-ng-href="/#!/pacientes/{{paciente._id}}/estudios/create">Crear Estudio</a>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div data-ng-repeat="estudio in estudios">
+          <img ng-src="data:image/jpeg;base64,{{estudio.image}}" id="estudio.image" width="60" height="60"/>
+          {{estudio.created | date:'medium'}} 
+          <span style="float: right;" data-ng-if="hasAuthorization(estudio)">
+            <a class="btn btn-info btn-small" href="/#!/estudios/{{estudio._id}}"> Ver </a>
+          </span>
+        </div>
+      </div>
+    </div> 
+  </div>
+</section>
